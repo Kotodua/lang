@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <select id="file-select">
+      <option value="">Select a file</option>
+    </select>
+    <button onclick="openSelectedFile()">Open File</button>
+
     <input type="file" id="csvFile" accept=".csv" />
     <label for="hiddenColumns">Hidden Columns (comma-separated):</label>
     <input type="text" id="hiddenColumns" placeholder="1,2,3" />

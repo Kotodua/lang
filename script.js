@@ -1,3 +1,20 @@
+async function getFileList() {
+  const response = await fetch('https://api.github.com/repos/Kotodua/lang/tree/main/words%20sets');
+  const data = await response.json();
+  return data;
+}
+
+async function openSelectedFile() {
+  const fileList = await getFileList();
+  const selectedFile = document.getElementById('file-select').value;
+  if (selectedFile !== '') {
+    const file = fileList.find((f) => f.name === selectedFile);
+    if (file) {
+      window.open(file.download_url);
+    }
+  }
+}
+
 document.getElementById('csvFile').addEventListener('change', (event) => {
     const file = event.target.files[0];
     if (file) {
