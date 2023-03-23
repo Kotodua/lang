@@ -2,13 +2,18 @@ async function getFileList() {
   const response = await fetch('https://api.github.com/repos/Kotodua/lang/contents/words-sets', {
     headers: {
       Accept: 'application/vnd.github+json',
-      Authorization: 'Bearer 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',
-      'X-GitHub-Api-Version': '2022-11-28'
+      Authorization: 'Bearer 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'
     }
   });
   const data = await response.json();
   return data;
 }
+
+getFileList().then(data => {
+  console.log(data); // do something with the file list data
+}).catch(error => {
+  console.error(error); // handle any errors that occurred
+});
 
 async function openSelectedFile() {
   const fileList = await getFileList();
