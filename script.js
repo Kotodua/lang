@@ -1,5 +1,5 @@
 async function getFileList() {
-  const response = await fetch('https://api.github.com/repos/Kotodua/lang/tree/main/words%20sets');
+  const response = await fetch('https://api.github.com/repos/Kotodua/lang/tree/main/words-sets');
   const data = await response.json();
   return data;
 }
