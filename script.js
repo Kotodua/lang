@@ -2,7 +2,7 @@ async function getFileList() {
   const response = await fetch('https://api.github.com/repos/Kotodua/lang/contents/words-sets', {
     headers: {
       Accept: 'application/vnd.github+json',
-      Authorization: 'Bearer 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'
+      Authorization: 'Bearer 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'
     }
   });
   const data = await response.json();
