@@ -1,8 +1,11 @@
 async function getFileList() {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+  console.log(params);
   const response = await fetch('https://api.github.com/repos/Kotodua/lang/contents/words-sets', {
     headers: {
       Accept: 'application/vnd.github+json',
-      Authorization: 'Bearer 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'
+      Authorization: `Bearer ${params.token}`
     }
   });
   const data = await response.json();
@@ -10,18 +13,38 @@ async function getFileList() {
 }
 
 getFileList().then(data => {
-  console.log(data); // do something with the file list data
+    const select = document.getElementById('file-select')
+
+    data.forEach(file => {
+        const option = document.createElement('option');
+        option.value = file.name;
+        option.innerHTML = file.name;
+        select.appendChild(option);
+    })
+
 }).catch(error => {
   console.error(error); // handle any errors that occurred
 });
 
 async function openSelectedFile() {
-  const fileList = await getFileList();
+   const fileList = await getFileList();
+  //
+
+
   const selectedFile = document.getElementById('file-select').value;
   if (selectedFile !== '') {
     const file = fileList.find((f) => f.name === selectedFile);
     if (file) {
-      window.open(file.download_url);
+      // window.open(file.download_url);
+
+        const response = await fetch(file.download_url);
+        const blob = await response.blob();
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const csvData = e.target.result;
+            createTableFromCSV(csvData);
+        };
+        reader.readAsText(blob);
     }
   }
 }
