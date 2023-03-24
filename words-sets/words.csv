@@ -40,10 +40,11 @@ word			| Spanish		| How to say
 Мать			|Madre/Mama		| 
 Брат			|Hermano		| 
 Сестра			|Hermana		| 
-Дядя			|Tio			| 
-Тетя			|Tia			| 
-Дедушка			|Abuelo			| 
-Бабушка			|Abuela			| 
+Дядя			|Tio			| Тио
+Тетя			|Tia			| Тиа
+Дедушка			|Abuelo			| Абуэло
+Бабушка			|Abuela			| Абуэла
+
 Зная Дом		|Conociendo la casa| 
 Это твоя комната|Este es tu cuarto|
 Это туалет		|Este es el cuarto be bano|
